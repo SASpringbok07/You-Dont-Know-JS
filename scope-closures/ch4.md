@@ -361,7 +361,7 @@ Next, let's talk about the declaration `var buckets`. That variable is used acro
 
 | NOTE: |
 | :--- |
-| The parameter `names` isn't used across the whole function, but there's no way limit the scope of a parameter, so it behaves as a function-wide declaration regardless. |
+| The parameter `names` isn't used across the whole function, but there's no way to limit the scope of a parameter, so it behaves as a function-wide declaration regardless. |
 
 So why did we use `var` instead of `let` to declare the `buckets` variable? There's both stylistic and technical reasons to choose `var` here.
 
@@ -397,7 +397,7 @@ There are other stylistic and operational reasons to choose `var` or `let` in di
 
 My advice to reserve `var` for (mostly only) a top-level function scope means that all other declarations should use `let`. But you may still be wondering how to decide where each declaration in your program belongs?
 
-POLE already guides you on those decisions, but let's make sure we explicitly state it. The way to decide is not based on which keyword you want to use. The way to decide is to ask, "What is the most minimal scope exposure that's sufficient for this variable?" Once that is answered, you'll know if a variable belongs in a block scope or the function scope. If you decide initially that a variable should be block-scoped, and later realize it needs to be elevated to be function-scoped, then that dictates a change not only in the location of that variable's declaration, but also the keyword used. The decision making process really should proceed like that
+POLE already guides you on those decisions, but let's make sure we explicitly state it. The way to decide is not based on which keyword you want to use. The way to decide is to ask, "What is the most minimal scope exposure that's sufficient for this variable?" Once that is answered, you'll know if a variable belongs in a block scope or the function scope. If you decide initially that a variable should be block-scoped, and later realize it needs to be elevated to be function-scoped, then that dictates a change not only in the location of that variable's declaration, but also the keyword used. The decision making process really should proceed like that.
 
 If a declaration belongs in a block scope, use `let`. If it belongs in the function scope, use `var` (again, my opinion).
 
