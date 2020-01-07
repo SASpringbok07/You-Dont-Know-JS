@@ -55,7 +55,7 @@ The color of a marble (what bucket it comes from) -- the meta information of wha
 
 Since the marble's color is known from compilation, and it's immutable, this information will likely be stored with (or at least accessible from) each variable's entry in the AST; that information is then used in generating the executable instructions that constitute the program's run-time. In other words, *Engine* (from Chapter 2) doesn't need to lookup and figure out which scope bucket a variable comes from. That information is already known!
 
-Avoiding the need for a run-time lookup is a key optimization benefit for lexical scope. Scope is fixed at author-time/compile-time, and unaffected by run-time conditions, so no run-time lookup is necessary. Run-time is operates more performantly without spending time on these lookups.
+Avoiding the need for a run-time lookup is a key optimization benefit for lexical scope. Scope is fixed at author-time/compile-time, and unaffected by run-time conditions, so no run-time lookup is necessary. Run-time operates more performantly without spending time on these lookups.
 
 But I said "...usually known..." just now with respect to a marble's color determination during compilation. In what case would it *not* be known during compilation?
 
@@ -867,7 +867,7 @@ So if "hoisting" as a metaphor is inaccurate, what should we do with the term? I
 
 ### Re-declaration?
 
-What do you think happens when variable is declared more than once in the same scope?
+What do you think happens when a variable is declared more than once in the same scope?
 
 Consider:
 
@@ -1138,7 +1138,7 @@ Do you spot the problem? Our `i` is indeed just created once inside the loop. Th
 
 Remember, this "expanded" form is only a conceptual model to help you intuit the source of the problem. You might wonder if JS could have made the `const $$i = 0` instead into `let $ii = 0`, which would then allow `const` to work with our classic `for`-loop? It's possible, but then it would have been creating potentially surprising exceptions to `for`-loop semantics.
 
-In other words, it's a rather arbitrary (and likely confusing) nuanced exception to allow `i++` in the `for`-loop header to skirt strictness the `const` assignment, but not allow other re-assignments of `i` inside the loop iteration, as is sometimes done. As such, the more straightforward answer is: `const` can't be used with the classic `for`-loop form because of the re-assignment.
+In other words, it's a rather arbitrary (and likely confusing) nuanced exception to allow `i++` in the `for`-loop header to skirt strictness of the `const` assignment, but not allow other re-assignments of `i` inside the loop iteration, as is sometimes done. As such, the more straightforward answer is: `const` can't be used with the classic `for`-loop form because of the re-assignment.
 
 Interestingly, if you don't do re-assignment, then it's valid:
 
